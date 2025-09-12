@@ -3,11 +3,22 @@ import express from "express";
 import 'dotenv/config';
 import bcryptp from 'bcrypt';
 import pkg from 'pg';
+import jwt from 'jsonwebtoken';
 
 const { Client } = pkg;
 
 const app = express();
 const PORT = 8000;
+const payload = {
+  id: 923,
+  username: 'fran'
+};
+const secretKey = 'TPLean4a$';
+const options = {
+  expiresIn: '1h',
+  issuer: 'lean'
+};
+const token = jwt.sign(payload, secretKey, options);
 
 app.use(express.json());
 
@@ -81,6 +92,10 @@ app.post('/login', async (req, res) => {
     return res.status(500).json({ message: err.message });
   }
 });
+
+app.get(
+
+)
 
 app.get('/canciones', async (req, res) => {
   const client = new Client(config);

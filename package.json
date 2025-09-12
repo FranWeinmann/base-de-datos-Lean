@@ -1,7 +1,6 @@
 {
   "name": "vercel25",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,8 +11,18 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "dotenv": "^17.2.1",
+    "dotenv": "^17.2.2",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.16.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FranWeinmann/base-de-datos-Lean.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FranWeinmann/base-de-datos-Lean/issues"
+  },
+  "homepage": "https://github.com/FranWeinmann/base-de-datos-Lean#readme",
+  "description": ""
 }
