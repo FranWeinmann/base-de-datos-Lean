@@ -82,7 +82,8 @@ app.post('/login', async (req, res) => {
     const passOK = await bcryptp.compare(user.password, dbUser.password);
 
     if (passOK) {
-      res.send({ nombre: dbUser.nombre });
+      const token = jwt.sign({ id: dbUser.id, username: dbUser.userid }, secretKey, options);
+      res.json({ token });
     } else {
       res.status(401).json({ message: 'Clave inválida' });
     }
