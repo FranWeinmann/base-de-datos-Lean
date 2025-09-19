@@ -134,3 +134,7 @@ app.get('/canciones', async (req, res) => {
   console.log(result.rows);
   res.send(result.rows);
 });
+
+app.listen(PORT, () => {
+  console.log(`✅ Server is running on port ${PORT}`);
+})
