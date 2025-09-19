@@ -93,9 +93,36 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.get(
+app.get('/escucho', async (req, res) => {
+  const token = req.headers['authorization'];
 
-)
+  if (!token) {
+    return res.status(401).json({ message: 'Token no proporcionado' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, secretKey);
+    const userId = decoded.id;
+    const client = new Client(config);
+    await client.connect();
+    const query = `
+      SELECT c.titulo, e.reproducciones
+      FROM escuchas e
+      JOIN canciones c ON e.cancion_id = c.id
+      WHERE e.user_id = $1
+      ORDER BY e.reproducciones DESC;
+    `;
+    const result = await client.query(query, [userId]);
+    await client.end();
+    if (result.rowCount === 0) {
+      return res.status(404).json({ message: 'No se encontraron canciones escuchadas para este usuario' });
+    }
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error("Error verificando el token:", err);
+    res.status(500).json({ message: 'Error al procesar la solicitud', error: err.message });
+  }
+});
 
 app.get('/canciones', async (req, res) => {
   const client = new Client(config);
