@@ -70,7 +70,7 @@ app.post('/login', async (req, res) => {
     const client = new Client(config);
     await client.connect();
 
-    let result = await client.query('SELECT * FROM usuario WHERE userid=$1', [user.userid]);
+    let result = await client.query('SELECT * FROM usuario WHERE "ID"=$1', [user.userid]);
 
     await client.end();
 
@@ -79,10 +79,10 @@ app.post('/login', async (req, res) => {
     }
 
     let dbUser = result.rows[0];
-    const passOK = await bcryptp.compare(user.password, dbUser.password);
+    const passOK = await bcryptp.compare(user.password, dbUser.Password);
 
     if (passOK) {
-      const token = jwt.sign({ id: dbUser.id, username: dbUser.userid }, secretKey, options);
+      const token = jwt.sign({ id: dbUser.ID, username: dbUser.ID }, secretKey, options);
       res.json({ token });
     } else {
       res.status(401).json({ message: 'Clave inválida' });

@@ -4,4 +4,7 @@ export const config = {
   database: 'neondb',
   password: 'npg_LpI9jFdPn8vM',
   port: 5432,
+  ssl: {
+    rejectUnauthorized: false
+  }
 };
