@@ -1,8 +1,7 @@
 export const config = {
-    host:process.env.PGHOST,
-    database:process.env.PGDATABASE,
-    user:process.env.PGUSER,
-    password:process.env.PGPASSWORD,
-    port:5432,
-    ssl: true
-}
+  user: 'neondb_owner',
+  host: 'ep-fancy-surf-acr61d85-pooler.sa-east-1.aws.neon.tech',
+  database: 'neondb',
+  password: 'npg_LpI9jFdPn8vM',
+  port: 5432,
+};

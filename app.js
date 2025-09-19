@@ -1,6 +1,5 @@
 import { config } from './dbconfig.js';
 import express from "express";
-import 'dotenv/config';
 import bcryptp from 'bcrypt';
 import pkg from 'pg';
 import jwt from 'jsonwebtoken';
