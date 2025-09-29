@@ -9,7 +9,7 @@ Content-Type: application/json
   "is_admin": false
 }
 
-### 2. Login del usuario para obtener token
+### 2. Login de usuario (obtener token)
 POST http://localhost:8000/usuarios/login
 Content-Type: application/json
 
@@ -18,6 +18,36 @@ Content-Type: application/json
   "password": "1234"
 }
 
-### 3. Obtener canciones escuchadas (requiere token JWT)
+### 3. Obtener canciones escuchadas (requiere token)
 GET http://localhost:8000/usuarios/escucho
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MTUwMjI2LCJleHAiOjE3NTkxNTM4MjYsImlzcyI6ImxlYW4ifQ.sl-OY6rYwGgMTcN11EI6mYrAUzSVTGN6cEf16llLm9A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Im1vbmNoaXMxMjMiLCJ1c2VybmFtZSI6Im1vbmNoaXMxMjMiLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTc1OTE2NTM0NCwiZXhwIjoxNzU5MTY4OTQ0LCJpc3MiOiJsZWFuIn0.oaZ5kVd8Cc76YHUlpb9YkZT5LsWWu6ZgGDSvuunIu5E
+
+### 4. Obtener todas las canciones
+GET http://localhost:8000/canciones
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Im1vbmNoaXMxMjMiLCJ1c2VybmFtZSI6Im1vbmNoaXMxMjMiLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTc1OTE2NTM0NCwiZXhwIjoxNzU5MTY4OTQ0LCJpc3MiOiJsZWFuIn0.oaZ5kVd8Cc76YHUlpb9YkZT5LsWWu6ZgGDSvuunIu5E
+
+### 5. Crear nueva canción
+POST http://localhost:8000/canciones
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MTY2MDQ1LCJleHAiOjE3NTkxNjk2NDUsImlzcyI6ImxlYW4ifQ.N5RDFLLc1XNJ0S0z7xCAEVkYvp8A5qQBBw_k3iy3t2c
+
+{
+  "id": 11,
+  "nombre": "Canción de prueba",
+  "album": 9,
+  "duracion": 110,
+  "reproducciones": 10
+}
+
+### 6. Actualizar canción (por id)
+PUT http://localhost:8000/canciones/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MTY2MDQ1LCJleHAiOjE3NTkxNjk2NDUsImlzcyI6ImxlYW4ifQ.N5RDFLLc1XNJ0S0z7xCAEVkYvp8A5qQBBw_k3iy3t2c
+
+{
+  "nombre": "Canción actualizada"
+}
+
+### 7. Eliminar canción (por id)
+DELETE http://localhost:8000/canciones/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MTY2MzQzLCJleHAiOjE3NTkxNjk5NDMsImlzcyI6ImxlYW4ifQ.qRYzCvfn1asWF6HL_iIy8Y9ToMrZLohNL58_V81W5SI

@@ -70,8 +70,8 @@ export const escucho = async (req, res) => {
   const query = `
     SELECT c.nombre, e.reproducciones
     FROM escucha e
-    JOIN canciones c ON e.cancion = c.id
-    WHERE e.usuario = $1
+    JOIN canciones c ON e."CancionID" = c.id
+    WHERE e."UsuarioID" = $1
     ORDER BY e.reproducciones DESC;
   `;
   const result = await client.query(query, [userId]);
