@@ -68,7 +68,7 @@ export const escucho = async (req, res) => {
   const client = new Client(config);
   await client.connect();
   const query = `
-    SELECT c.titulo, e.reproducciones
+    SELECT c.nombre, e.reproducciones
     FROM escucha e
     JOIN canciones c ON e.cancion = c.id
     WHERE e.usuario = $1

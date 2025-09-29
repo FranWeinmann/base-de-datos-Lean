@@ -38,7 +38,7 @@ export const updateCancion = async (req, res) => {
     const client = new Client(config);
     await client.connect();
     const result = await client.query(
-      "UPDATE canciones SET titulo = $1 WHERE id = $2 RETURNING *",
+      "UPDATE canciones SET nombre = $1 WHERE id = $2 RETURNING *",
       [nombre, id]
     );
     await client.end();
