@@ -1,11 +1,13 @@
 ### 1. Crear nuevo usuario
-POST http://localhost:8000/createuser
+POST /users/createuser
+
 Content-Type: application/json
 
 {
   "nombre": "Juan",
   "userid": "juan123",
-  "password": "1234"
+  "password": "1234",
+  "is_admin": true
 }
 
 ### 2. Login del usuario para obtener token
@@ -19,4 +21,4 @@ Content-Type: application/json
 
 ### 3. Obtener canciones escuchadas (requiere token JWT)
 GET http://localhost:8000/escucho
-Authorization: Bearer {{token}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpYXQiOjE3NTkwOTI3MjcsImV4cCI6MTc1OTA5NjMyNywiaXNzIjoibGVhbiJ9.kjaWB2_491iXK-DROvaB3hFE1fEiA7QZgvEMaz6AYIM
