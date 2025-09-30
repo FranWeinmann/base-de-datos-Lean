@@ -11,12 +11,7 @@ export const getCanciones = async (req, res) => {
   res.json(result.rows);
 };
 
-export const createCancion = async (req, res) => {
-  const { id, nombre, album, duracion, reproducciones } = req.body;
-  if (!id || !nombre || !album || !duracion || !reproducciones) {
-    return res.status(400).json({ message: "Faltan datos" });
-  }
-
+export const createCancion = async ({ id, nombre, album, duracion, reproducciones }, res) => {
   try {
     const client = new Client(config);
     await client.connect();
@@ -31,11 +26,7 @@ export const createCancion = async (req, res) => {
   }
 };
 
-export const updateCancion = async (req, res) => {
-  const { id } = req.params;
-  const { nombre } = req.body;
-  if (!nombre) return res.status(400).json({ message: "Debe enviar el nuevo nombre" });
-
+export const updateCancion = async (id, nombre, res) => {
   try {
     const client = new Client(config);
     await client.connect();
@@ -46,15 +37,13 @@ export const updateCancion = async (req, res) => {
     await client.end();
 
     if (result.rowCount === 0) return res.status(404).json({ message: "Canción no encontrada" });
-
     res.json({ message: "Canción actualizada exitosamente", cancion: result.rows[0] });
   } catch (error) {
     res.status(500).json({ message: "Error del servidor" });
   }
 };
 
-export const deleteCancion = async (req, res) => {
-  const { id } = req.params;
+export const deleteCancion = async ({id}, res) => {
   const client = new Client(config);
   await client.connect();
 
@@ -64,9 +53,7 @@ export const deleteCancion = async (req, res) => {
 
     await client.end();
 
-    if (result.rowCount === 0)
-      return res.status(404).json({ message: "Canción no encontrada" });
-
+    if (result.rowCount === 0) return res.status(404).json({ message: "Canción no encontrada" });
     res.json({ message: "Canción eliminada", deleted: result.rows[0] });
   } catch (error) {
     await client.end();

@@ -3,10 +3,10 @@ POST http://localhost:8000/usuarios/create
 Content-Type: application/json
 
 {
-  "nombre": "Monchis",
-  "userid": "monchis123",
-  "password": "231",
-  "is_admin": false
+  "nombre": "Juan",
+  "userid": "juan123",
+  "password": "1234",
+  "is_admin": true
 }
 
 ### 2. Login de usuario (obtener token)
@@ -20,34 +20,34 @@ Content-Type: application/json
 
 ### 3. Obtener canciones escuchadas (requiere token)
 GET http://localhost:8000/usuarios/escucho
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Im1vbmNoaXMxMjMiLCJ1c2VybmFtZSI6Im1vbmNoaXMxMjMiLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTc1OTE2NTM0NCwiZXhwIjoxNzU5MTY4OTQ0LCJpc3MiOiJsZWFuIn0.oaZ5kVd8Cc76YHUlpb9YkZT5LsWWu6ZgGDSvuunIu5E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MjQzNjM5LCJleHAiOjE3NTkyNDcyMzksImlzcyI6ImxlYW4ifQ.xOnfYB0YybmZokpgkbdUe5cmF27xXloXHLS2XaqHx-4
 
 ### 4. Obtener todas las canciones
 GET http://localhost:8000/canciones
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Im1vbmNoaXMxMjMiLCJ1c2VybmFtZSI6Im1vbmNoaXMxMjMiLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTc1OTE2NTM0NCwiZXhwIjoxNzU5MTY4OTQ0LCJpc3MiOiJsZWFuIn0.oaZ5kVd8Cc76YHUlpb9YkZT5LsWWu6ZgGDSvuunIu5E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MjQzNjM5LCJleHAiOjE3NTkyNDcyMzksImlzcyI6ImxlYW4ifQ.xOnfYB0YybmZokpgkbdUe5cmF27xXloXHLS2XaqHx-4
 
 ### 5. Crear nueva canción
 POST http://localhost:8000/canciones
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MTY2MDQ1LCJleHAiOjE3NTkxNjk2NDUsImlzcyI6ImxlYW4ifQ.N5RDFLLc1XNJ0S0z7xCAEVkYvp8A5qQBBw_k3iy3t2c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MjQzNjM5LCJleHAiOjE3NTkyNDcyMzksImlzcyI6ImxlYW4ifQ.xOnfYB0YybmZokpgkbdUe5cmF27xXloXHLS2XaqHx-4
 
 {
-  "id": 11,
-  "nombre": "Canción de prueba",
-  "album": 9,
-  "duracion": 110,
-  "reproducciones": 10
+  "id": 21,
+  "nombre": "Holaa",
+  "album": 8,
+  "duracion": 100,
+  "reproducciones": 20
 }
 
 ### 6. Actualizar canción (por id)
-PUT http://localhost:8000/canciones/1
+PUT http://localhost:8000/canciones/21
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MTY2MDQ1LCJleHAiOjE3NTkxNjk2NDUsImlzcyI6ImxlYW4ifQ.N5RDFLLc1XNJ0S0z7xCAEVkYvp8A5qQBBw_k3iy3t2c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MjQ0MjY5LCJleHAiOjE3NTkyNDc4NjksImlzcyI6ImxlYW4ifQ.OtqAo28MDE-uRITGTRZWVXwWWkaXaqenXDHUFkm1G4s
 
 {
-  "nombre": "Canción actualizada"
+  "nombre": "Canción hola"
 }
 
 ### 7. Eliminar canción (por id)
-DELETE http://localhost:8000/canciones/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MTY2MzQzLCJleHAiOjE3NTkxNjk5NDMsImlzcyI6ImxlYW4ifQ.qRYzCvfn1asWF6HL_iIy8Y9ToMrZLohNL58_V81W5SI
+DELETE http://localhost:8000/canciones/21
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MjQ0MjY5LCJleHAiOjE3NTkyNDc4NjksImlzcyI6ImxlYW4ifQ.OtqAo28MDE-uRITGTRZWVXwWWkaXaqenXDHUFkm1G4s

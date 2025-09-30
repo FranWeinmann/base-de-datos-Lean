@@ -10,8 +10,8 @@ import { verifyToken, verifyAdmin } from "../middlewares/authMiddleware.js";
 const router = Router();
 
 router.get("/", getCanciones);
-router.post("/", createCancion);
-router.put("/:id", updateCancion);
+router.post("/", verifyToken, verifyAdmin, createCancion);
+router.put("/:id", verifyToken, verifyAdmin, updateCancion);
 router.delete("/:id", verifyToken, verifyAdmin, deleteCancion);
 
 export default router;

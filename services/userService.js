@@ -7,12 +7,7 @@ const { Client } = pkg;
 const secretKey = "TPLean4a$";
 const options = { expiresIn: "1h", issuer: "lean" };
 
-export const createUser = async (req, res) => {
-  const user = req.body;
-  if (!user.nombre || !user.userid || !user.password) {
-    return res.status(400).json({ message: "Completa todos los campos" });
-  }
-
+export const createUser = async (user, res) => {
   try {
     const client = new Client(config);
     await client.connect();
@@ -31,12 +26,7 @@ export const createUser = async (req, res) => {
   }
 };
 
-export const login = async (req, res) => {
-  const { userid, password } = req.body;
-  if (!userid || !password) {
-    return res.status(400).json({ message: "Debe completar todos los campos" });
-  }
-
+export const login = async ({ userid, password }, res) => {
   try {
     const client = new Client(config);
     await client.connect();
