@@ -20,16 +20,16 @@ Content-Type: application/json
 
 ### 3. Obtener canciones escuchadas (requiere token)
 GET http://localhost:8000/usuarios/escucho
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MjQzNjM5LCJleHAiOjE3NTkyNDcyMzksImlzcyI6ImxlYW4ifQ.xOnfYB0YybmZokpgkbdUe5cmF27xXloXHLS2XaqHx-4
+Authorization: Bearer token
 
 ### 4. Obtener todas las canciones
 GET http://localhost:8000/canciones
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MjQzNjM5LCJleHAiOjE3NTkyNDcyMzksImlzcyI6ImxlYW4ifQ.xOnfYB0YybmZokpgkbdUe5cmF27xXloXHLS2XaqHx-4
+Authorization: Bearer token
 
 ### 5. Crear nueva canción
 POST http://localhost:8000/canciones
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MjQzNjM5LCJleHAiOjE3NTkyNDcyMzksImlzcyI6ImxlYW4ifQ.xOnfYB0YybmZokpgkbdUe5cmF27xXloXHLS2XaqHx-4
+Authorization: Bearer token
 
 {
   "id": 21,
@@ -42,7 +42,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiL
 ### 6. Actualizar canción (por id)
 PUT http://localhost:8000/canciones/21
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MjQ0MjY5LCJleHAiOjE3NTkyNDc4NjksImlzcyI6ImxlYW4ifQ.OtqAo28MDE-uRITGTRZWVXwWWkaXaqenXDHUFkm1G4s
+Authorization: Bearer token
 
 {
   "nombre": "Canción hola"
@@ -50,4 +50,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiL
 
 ### 7. Eliminar canción (por id)
 DELETE http://localhost:8000/canciones/21
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MjQ0MjY5LCJleHAiOjE3NTkyNDc4NjksImlzcyI6ImxlYW4ifQ.OtqAo28MDE-uRITGTRZWVXwWWkaXaqenXDHUFkm1G4s
+Authorization: Bearer token
+
+### 8. Registrar una escucha de canción
+POST http://localhost:8000/canciones/escucho
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MjgxODc0LCJleHAiOjE3NTkyODU0NzQsImlzcyI6ImxlYW4ifQ.GvY-bxmEyfnuYok82RaRPpUW2rAu_P1g8qtix5T_Zj4
+
+{
+  "id": 20,
+  "idotro": 1
+}

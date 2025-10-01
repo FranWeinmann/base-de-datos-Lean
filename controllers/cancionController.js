@@ -25,3 +25,15 @@ export const deleteCancion = async (req, res) => {
   if (!id) return res.status(400).json({ message: "Asegurese de que el ID sea correcto" });
   await cancionService.deleteCancion(req.params, res);
 };
+
+export const escuchoCancion = async (req, res) => {
+  const { id, idotro } = req.body;
+  const userId = req.user.id;
+
+  if (!id || !idotro) {
+    return res.status(400).json({ message: "Debe enviar id e idotro en el body" });
+  }
+  if (!userId) return res.status(401).json({ message: "Usuario no autenticado" });
+
+  await cancionService.escuchoCancion({ id, idotro, userId }, res);
+};

@@ -60,3 +60,28 @@ export const deleteCancion = async ({id}, res) => {
     res.status(500).json({ message: "Error del servidor", error });
   }
 };
+
+export const escuchoCancion = async ({ id, idotro, userId }, res) => {
+  try {
+    const client = new Client(config);
+    await client.connect();
+
+    const { rows } = await client.query("SELECT reproducciones FROM canciones WHERE id = $1", [id]);
+    if (rows.length === 0) {
+      await client.end();
+      return res.status(404).json({ message: "Canción no encontrada" });
+    }
+
+    const reproduccionesActuales = rows[0].reproducciones || 0;
+    const result = await client.query(
+      "INSERT INTO escucha (id, usuarioid, cancionid, reproducciones) VALUES ($1, $2, $3, $4) RETURNING *",
+      [idotro, userId, id, reproduccionesActuales + 1]
+    );
+    await client.query("UPDATE canciones SET reproducciones = reproducciones + 1 WHERE id = $1", [id]);
+
+    await client.end();
+    res.status(201).json({ message: "Escucha registrada", escucha: result.rows[0] });
+  } catch (error) {
+    res.status(500).json({ message: "Error al registrar escucha", error });
+  }
+};
