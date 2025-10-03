@@ -65,23 +65,34 @@ export const escuchoCancion = async ({ id, idotro, userId }, res) => {
   try {
     const client = new Client(config);
     await client.connect();
-
     const { rows } = await client.query("SELECT reproducciones FROM canciones WHERE id = $1", [id]);
     if (rows.length === 0) {
       await client.end();
       return res.status(404).json({ message: "Canción no encontrada" });
     }
-
     const reproduccionesActuales = rows[0].reproducciones || 0;
-    const result = await client.query(
-      "INSERT INTO escucha (id, usuarioid, cancionid, reproducciones) VALUES ($1, $2, $3, $4) RETURNING *",
-      [idotro, userId, id, reproduccionesActuales + 1]
+    const exist = await client.query(
+      "SELECT id FROM escucha WHERE usuarioid = $1 AND cancionid = $2",
+      [userId, id]
     );
-    await client.query("UPDATE canciones SET reproducciones = reproducciones + 1 WHERE id = $1", [id]);
+    let result;
+    if (exist.rows.length === 0) {
+      result = await client.query(
+        "INSERT INTO escucha (id, usuarioid, cancionid, reproducciones) VALUES ($1, $2, $3, $4) RETURNING *",
+        [idotro, userId, id, reproduccionesActuales + 1]
+      );
+    } else {
+      result = await client.query(
+        "UPDATE escucha SET reproducciones = reproducciones + 1 WHERE usuarioid = $1 AND cancionid = $2 RETURNING *",
+        [userId, id]
+      );
+    }
 
+    await client.query("UPDATE canciones SET reproducciones = reproducciones + 1 WHERE id = $1", [id]);
     await client.end();
     res.status(201).json({ message: "Escucha registrada", escucha: result.rows[0] });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Error al registrar escucha", error });
   }
 };

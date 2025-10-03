@@ -55,7 +55,7 @@ Authorization: Bearer token
 ### 8. Registrar una escucha de canción
 POST http://localhost:8000/canciones/escucho
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Imp1YW4xMjMiLCJ1c2VybmFtZSI6Imp1YW4xMjMiLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzU5MjgxODc0LCJleHAiOjE3NTkyODU0NzQsImlzcyI6ImxlYW4ifQ.GvY-bxmEyfnuYok82RaRPpUW2rAu_P1g8qtix5T_Zj4
+Authorization: Bearer token
 
 {
   "id": 20,
